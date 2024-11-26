@@ -32,355 +32,355 @@
 <body>
     <!-- Raw input text -->
     <div id="raw-input" style="display:none;">
-Q1a Q: 3*a**2*b + 4*a*b**2
-Q1a A: a*b*(3*a + 4*b)
+Q1a Q: 16*p**2*q - 8*p*q**2
+Q1a A: 8*p*q*(2*p - q)
 
-Q1b Q: 3*a**2*b + 4*a*b**2 - 6*a - 8*b
-Q1b M: a*b*(3*a + 4*b) - 6*a - 8*b
-Q1b A: (3*a + 4*b)*(a*b - 2)
+Q1b Q: 16*p**2*q - 8*p*q**2 - 4*p + 2*q
+Q1b M: 8*p*q*(2*p - q) - 4*p + 2*q
+Q1b A: 2*(2*p - q)*(4*p*q - 1)
 ===
-Q2a Q: 4*r**2*s - 16*r*s**2
-Q2a A: 4*r*s*(r - 4*s)
+Q2a Q: 16*a**2*b - 16*a*b**2
+Q2a A: 16*a*b*(a - b)
 
-Q2b Q: 4*r**2*s - 16*r*s**2 - r + 4*s
-Q2b M: 4*r*s*(r - 4*s) - r + 4*s
-Q2b A: (r - 4*s)*(4*r*s - 1)
+Q2b Q: 16*a**2*b - 16*a*b**2 + 4*a - 4*b
+Q2b M: 16*a*b*(a - b) + 4*a - 4*b
+Q2b A: 4*(a - b)*(4*a*b + 1)
 ===
-Q3a Q: 2*m**2*n - 2*m*n**2
-Q3a A: 2*m*n*(m - n)
+Q3a Q: 2*a**2*b - 3*a*b**2
+Q3a A: a*b*(2*a - 3*b)
 
-Q3b Q: 2*m**2*n - 2*m*n**2 - 4*m + 4*n
-Q3b M: 2*m*n*(m - n) - 4*m + 4*n
-Q3b A: 2*(m - n)*(m*n - 2)
+Q3b Q: 2*a**2*b - 3*a*b**2 + 2*a - 3*b
+Q3b M: a*b*(2*a - 3*b) + 2*a - 3*b
+Q3b A: (2*a - 3*b)*(a*b + 1)
 ===
-Q4a Q: 16*x**2*y - 16*x*y**2
-Q4a A: 16*x*y*(x - y)
+Q4a Q: 2*x**2*y - 6*x*y**2
+Q4a A: 2*x*y*(x - 3*y)
 
-Q4b Q: 16*x**2*y - 16*x*y**2 + 16*x - 16*y
-Q4b M: 16*x*y*(x - y) + 16*x - 16*y
-Q4b A: 16*(x - y)*(x*y + 1)
+Q4b Q: 2*x**2*y - 6*x*y**2 + x - 3*y
+Q4b M: 2*x*y*(x - 3*y) + x - 3*y
+Q4b A: (x - 3*y)*(2*x*y + 1)
 ===
-Q5a Q: 12*x**2*y + 8*x*y**2
-Q5a A: 4*x*y*(3*x + 2*y)
+Q5a Q: 6*m**2*n + 2*m*n**2
+Q5a A: 2*m*n*(3*m + n)
 
-Q5b Q: 12*x**2*y + 8*x*y**2 + 3*x + 2*y
-Q5b M: 4*x*y*(3*x + 2*y) + 3*x + 2*y
-Q5b A: (3*x + 2*y)*(4*x*y + 1)
+Q5b Q: 6*m**2*n + 2*m*n**2 - 9*m - 3*n
+Q5b M: 2*m*n*(3*m + n) - 9*m - 3*n
+Q5b A: (3*m + n)*(2*m*n - 3)
 ===
-Q6a Q: 3*m**2*n - 9*m*n**2
-Q6a A: 3*m*n*(m - 3*n)
+Q6a Q: 6*r**2*s + 8*r*s**2
+Q6a A: 2*r*s*(3*r + 4*s)
 
-Q6b Q: 3*m**2*n - 9*m*n**2 + 3*m - 9*n
-Q6b M: 3*m*n*(m - 3*n) + 3*m - 9*n
-Q6b A: 3*(m - 3*n)*(m*n + 1)
+Q6b Q: 6*r**2*s + 8*r*s**2 + 12*r + 16*s
+Q6b M: 2*r*s*(3*r + 4*s) + 12*r + 16*s
+Q6b A: 2*(3*r + 4*s)*(r*s + 2)
 ===
-Q7a Q: 6*p**2*q - 4*p*q**2
-Q7a A: 2*p*q*(3*p - 2*q)
+Q7a Q: 12*x**2*y - 8*x*y**2
+Q7a A: 4*x*y*(3*x - 2*y)
 
-Q7b Q: 6*p**2*q - 4*p*q**2 + 6*p - 4*q
-Q7b M: 2*p*q*(3*p - 2*q) + 6*p - 4*q
-Q7b A: 2*(3*p - 2*q)*(p*q + 1)
+Q7b Q: 12*x**2*y - 8*x*y**2 + 9*x - 6*y
+Q7b M: 4*x*y*(3*x - 2*y) + 9*x - 6*y
+Q7b A: (3*x - 2*y)*(4*x*y + 3)
 ===
-Q8a Q: 4*m**2*n + 3*m*n**2
-Q8a A: m*n*(4*m + 3*n)
+Q8a Q: 3*p**2*q - 3*p*q**2
+Q8a A: 3*p*q*(p - q)
 
-Q8b Q: 4*m**2*n + 3*m*n**2 + 4*m + 3*n
-Q8b M: m*n*(4*m + 3*n) + 4*m + 3*n
-Q8b A: (4*m + 3*n)*(m*n + 1)
+Q8b Q: 3*p**2*q - 3*p*q**2 + 12*p - 12*q
+Q8b M: 3*p*q*(p - q) + 12*p - 12*q
+Q8b A: 3*(p - q)*(p*q + 4)
 ===
-Q9a Q: 8*m**2*n - 4*m*n**2
-Q9a A: 4*m*n*(2*m - n)
+Q9a Q: 16*p**2*q + 12*p*q**2
+Q9a A: 4*p*q*(4*p + 3*q)
 
-Q9b Q: 8*m**2*n - 4*m*n**2 - 8*m + 4*n
-Q9b M: 4*m*n*(2*m - n) - 8*m + 4*n
-Q9b A: 4*(2*m - n)*(m*n - 1)
+Q9b Q: 16*p**2*q + 12*p*q**2 - 12*p - 9*q
+Q9b M: 4*p*q*(4*p + 3*q) - 12*p - 9*q
+Q9b A: (4*p + 3*q)*(4*p*q - 3)
 ===
-Q10a Q: 8*a**2*b - 8*a*b**2
-Q10a A: 8*a*b*(a - b)
+Q10a Q: 4*p**2*q + 8*p*q**2
+Q10a A: 4*p*q*(p + 2*q)
 
-Q10b Q: 8*a**2*b - 8*a*b**2 - 16*a + 16*b
-Q10b M: 8*a*b*(a - b) - 16*a + 16*b
-Q10b A: 8*(a - b)*(a*b - 2)
+Q10b Q: 4*p**2*q + 8*p*q**2 + 2*p + 4*q
+Q10b M: 4*p*q*(p + 2*q) + 2*p + 4*q
+Q10b A: 2*(p + 2*q)*(2*p*q + 1)
 ===
-Q11a Q: 9*x**2*y + 3*x*y**2
-Q11a A: 3*x*y*(3*x + y)
+Q11a Q: 8*x**2*y - 16*x*y**2
+Q11a A: 8*x*y*(x - 2*y)
 
-Q11b Q: 9*x**2*y + 3*x*y**2 - 9*x - 3*y
-Q11b M: 3*x*y*(3*x + y) - 9*x - 3*y
-Q11b A: 3*(3*x + y)*(x*y - 1)
+Q11b Q: 8*x**2*y - 16*x*y**2 + 6*x - 12*y
+Q11b M: 8*x*y*(x - 2*y) + 6*x - 12*y
+Q11b A: 2*(x - 2*y)*(4*x*y + 3)
 ===
-Q12a Q: 6*x**2*y + 6*x*y**2
-Q12a A: 6*x*y*(x + y)
+Q12a Q: 6*p**2*q - 6*p*q**2
+Q12a A: 6*p*q*(p - q)
 
-Q12b Q: 6*x**2*y + 6*x*y**2 + 4*x + 4*y
-Q12b M: 6*x*y*(x + y) + 4*x + 4*y
-Q12b A: 2*(x + y)*(3*x*y + 2)
+Q12b Q: 6*p**2*q - 6*p*q**2 + 2*p - 2*q
+Q12b M: 6*p*q*(p - q) + 2*p - 2*q
+Q12b A: 2*(p - q)*(3*p*q + 1)
 ===
-Q13a Q: 6*r**2*s - 4*r*s**2
-Q13a A: 2*r*s*(3*r - 2*s)
+Q13a Q: 6*p**2*q + 12*p*q**2
+Q13a A: 6*p*q*(p + 2*q)
 
-Q13b Q: 6*r**2*s - 4*r*s**2 + 6*r - 4*s
-Q13b M: 2*r*s*(3*r - 2*s) + 6*r - 4*s
-Q13b A: 2*(3*r - 2*s)*(r*s + 1)
+Q13b Q: 6*p**2*q + 12*p*q**2 - 6*p - 12*q
+Q13b M: 6*p*q*(p + 2*q) - 6*p - 12*q
+Q13b A: 6*(p + 2*q)*(p*q - 1)
 ===
-Q14a Q: 8*r**2*s - 12*r*s**2
-Q14a A: 4*r*s*(2*r - 3*s)
+Q14a Q: 6*m**2*n - 2*m*n**2
+Q14a A: 2*m*n*(3*m - n)
 
-Q14b Q: 8*r**2*s - 12*r*s**2 - 8*r + 12*s
-Q14b M: 4*r*s*(2*r - 3*s) - 8*r + 12*s
-Q14b A: 4*(2*r - 3*s)*(r*s - 1)
+Q14b Q: 6*m**2*n - 2*m*n**2 - 6*m + 2*n
+Q14b M: 2*m*n*(3*m - n) - 6*m + 2*n
+Q14b A: 2*(3*m - n)*(m*n - 1)
 ===
-Q15a Q: 3*x**2*y + 3*x*y**2
-Q15a A: 3*x*y*(x + y)
+Q15a Q: 4*p**2*q + 16*p*q**2
+Q15a A: 4*p*q*(p + 4*q)
 
-Q15b Q: 3*x**2*y + 3*x*y**2 + 6*x + 6*y
-Q15b M: 3*x*y*(x + y) + 6*x + 6*y
-Q15b A: 3*(x + y)*(x*y + 2)
+Q15b Q: 4*p**2*q + 16*p*q**2 - 3*p - 12*q
+Q15b M: 4*p*q*(p + 4*q) - 3*p - 12*q
+Q15b A: (p + 4*q)*(4*p*q - 3)
 ===
-Q16a Q: a**2*b + 2*a*b**2
-Q16a A: a*b*(a + 2*b)
+Q16a Q: 16*x**2*y + 12*x*y**2
+Q16a A: 4*x*y*(4*x + 3*y)
 
-Q16b Q: a**2*b + 2*a*b**2 + a + 2*b
-Q16b M: a*b*(a + 2*b) + a + 2*b
-Q16b A: (a + 2*b)*(a*b + 1)
+Q16b Q: 16*x**2*y + 12*x*y**2 - 16*x - 12*y
+Q16b M: 4*x*y*(4*x + 3*y) - 16*x - 12*y
+Q16b A: 4*(4*x + 3*y)*(x*y - 1)
 ===
-Q17a Q: 6*m**2*n - 12*m*n**2
-Q17a A: 6*m*n*(m - 2*n)
+Q17a Q: 3*a**2*b - a*b**2
+Q17a A: a*b*(3*a - b)
 
-Q17b Q: 6*m**2*n - 12*m*n**2 - 2*m + 4*n
-Q17b M: 6*m*n*(m - 2*n) - 2*m + 4*n
-Q17b A: 2*(m - 2*n)*(3*m*n - 1)
+Q17b Q: 3*a**2*b - a*b**2 + 3*a - b
+Q17b M: a*b*(3*a - b) + 3*a - b
+Q17b A: (3*a - b)*(a*b + 1)
 ===
-Q18a Q: 3*x**2*y + 12*x*y**2
-Q18a A: 3*x*y*(x + 4*y)
+Q18a Q: 2*x**2*y + 2*x*y**2
+Q18a A: 2*x*y*(x + y)
 
-Q18b Q: 3*x**2*y + 12*x*y**2 + 2*x + 8*y
-Q18b M: 3*x*y*(x + 4*y) + 2*x + 8*y
-Q18b A: (x + 4*y)*(3*x*y + 2)
+Q18b Q: 2*x**2*y + 2*x*y**2 + 2*x + 2*y
+Q18b M: 2*x*y*(x + y) + 2*x + 2*y
+Q18b A: 2*(x + y)*(x*y + 1)
 ===
-Q19a Q: 9*x**2*y - 6*x*y**2
-Q19a A: 3*x*y*(3*x - 2*y)
+Q19a Q: 3*r**2*s - 12*r*s**2
+Q19a A: 3*r*s*(r - 4*s)
 
-Q19b Q: 9*x**2*y - 6*x*y**2 - 9*x + 6*y
-Q19b M: 3*x*y*(3*x - 2*y) - 9*x + 6*y
-Q19b A: 3*(3*x - 2*y)*(x*y - 1)
+Q19b Q: 3*r**2*s - 12*r*s**2 - 3*r + 12*s
+Q19b M: 3*r*s*(r - 4*s) - 3*r + 12*s
+Q19b A: 3*(r - 4*s)*(r*s - 1)
 ===
-Q20a Q: 8*a**2*b - 16*a*b**2
-Q20a A: 8*a*b*(a - 2*b)
+Q20a Q: 3*p**2*q + 9*p*q**2
+Q20a A: 3*p*q*(p + 3*q)
 
-Q20b Q: 8*a**2*b - 16*a*b**2 - 8*a + 16*b
-Q20b M: 8*a*b*(a - 2*b) - 8*a + 16*b
-Q20b A: 8*(a - 2*b)*(a*b - 1)
+Q20b Q: 3*p**2*q + 9*p*q**2 + p + 3*q
+Q20b M: 3*p*q*(p + 3*q) + p + 3*q
+Q20b A: (p + 3*q)*(3*p*q + 1)
 ===
-Q21a Q: 16*p**2*q + 4*p*q**2
-Q21a A: 4*p*q*(4*p + q)
+Q21a Q: 9*r**2*s - 3*r*s**2
+Q21a A: 3*r*s*(3*r - s)
 
-Q21b Q: 16*p**2*q + 4*p*q**2 + 4*p + q
-Q21b M: 4*p*q*(4*p + q) + 4*p + q
-Q21b A: (4*p + q)*(4*p*q + 1)
+Q21b Q: 9*r**2*s - 3*r*s**2 - 12*r + 4*s
+Q21b M: 3*r*s*(3*r - s) - 12*r + 4*s
+Q21b A: (3*r - s)*(3*r*s - 4)
 ===
-Q22a Q: 8*m**2*n + 16*m*n**2
-Q22a A: 8*m*n*(m + 2*n)
+Q22a Q: 2*r**2*s - 4*r*s**2
+Q22a A: 2*r*s*(r - 2*s)
 
-Q22b Q: 8*m**2*n + 16*m*n**2 - 6*m - 12*n
-Q22b M: 8*m*n*(m + 2*n) - 6*m - 12*n
-Q22b A: 2*(m + 2*n)*(4*m*n - 3)
+Q22b Q: 2*r**2*s - 4*r*s**2 + 6*r - 12*s
+Q22b M: 2*r*s*(r - 2*s) + 6*r - 12*s
+Q22b A: 2*(r - 2*s)*(r*s + 3)
 ===
-Q23a Q: 4*r**2*s + 16*r*s**2
-Q23a A: 4*r*s*(r + 4*s)
+Q23a Q: 2*p**2*q + 6*p*q**2
+Q23a A: 2*p*q*(p + 3*q)
 
-Q23b Q: 4*r**2*s + 16*r*s**2 + 3*r + 12*s
-Q23b M: 4*r*s*(r + 4*s) + 3*r + 12*s
-Q23b A: (r + 4*s)*(4*r*s + 3)
+Q23b Q: 2*p**2*q + 6*p*q**2 - 4*p - 12*q
+Q23b M: 2*p*q*(p + 3*q) - 4*p - 12*q
+Q23b A: 2*(p + 3*q)*(p*q - 2)
 ===
-Q24a Q: 12*p**2*q + 16*p*q**2
-Q24a A: 4*p*q*(3*p + 4*q)
+Q24a Q: 12*a**2*b + 8*a*b**2
+Q24a A: 4*a*b*(3*a + 2*b)
 
-Q24b Q: 12*p**2*q + 16*p*q**2 - 12*p - 16*q
-Q24b M: 4*p*q*(3*p + 4*q) - 12*p - 16*q
-Q24b A: 4*(3*p + 4*q)*(p*q - 1)
+Q24b Q: 12*a**2*b + 8*a*b**2 - 12*a - 8*b
+Q24b M: 4*a*b*(3*a + 2*b) - 12*a - 8*b
+Q24b A: 4*(3*a + 2*b)*(a*b - 1)
 ===
-Q25a Q: 4*a**2*b + 6*a*b**2
-Q25a A: 2*a*b*(2*a + 3*b)
+Q25a Q: 2*r**2*s + 6*r*s**2
+Q25a A: 2*r*s*(r + 3*s)
 
-Q25b Q: 4*a**2*b + 6*a*b**2 - 6*a - 9*b
-Q25b M: 2*a*b*(2*a + 3*b) - 6*a - 9*b
-Q25b A: (2*a + 3*b)*(2*a*b - 3)
+Q25b Q: 2*r**2*s + 6*r*s**2 - 4*r - 12*s
+Q25b M: 2*r*s*(r + 3*s) - 4*r - 12*s
+Q25b A: 2*(r + 3*s)*(r*s - 2)
 ===
-Q26a Q: 6*x**2*y - 4*x*y**2
-Q26a A: 2*x*y*(3*x - 2*y)
+Q26a Q: 12*p**2*q - 12*p*q**2
+Q26a A: 12*p*q*(p - q)
 
-Q26b Q: 6*x**2*y - 4*x*y**2 + 6*x - 4*y
-Q26b M: 2*x*y*(3*x - 2*y) + 6*x - 4*y
-Q26b A: 2*(3*x - 2*y)*(x*y + 1)
+Q26b Q: 12*p**2*q - 12*p*q**2 - 12*p + 12*q
+Q26b M: 12*p*q*(p - q) - 12*p + 12*q
+Q26b A: 12*(p - q)*(p*q - 1)
 ===
-Q27a Q: 3*m**2*n + 4*m*n**2
-Q27a A: m*n*(3*m + 4*n)
+Q27a Q: 12*p**2*q - 8*p*q**2
+Q27a A: 4*p*q*(3*p - 2*q)
 
-Q27b Q: 3*m**2*n + 4*m*n**2 + 6*m + 8*n
-Q27b M: m*n*(3*m + 4*n) + 6*m + 8*n
-Q27b A: (3*m + 4*n)*(m*n + 2)
+Q27b Q: 12*p**2*q - 8*p*q**2 - 9*p + 6*q
+Q27b M: 4*p*q*(3*p - 2*q) - 9*p + 6*q
+Q27b A: (3*p - 2*q)*(4*p*q - 3)
 ===
-Q28a Q: 6*a**2*b - 3*a*b**2
-Q28a A: 3*a*b*(2*a - b)
+Q28a Q: r**2*s + 2*r*s**2
+Q28a A: r*s*(r + 2*s)
 
-Q28b Q: 6*a**2*b - 3*a*b**2 + 2*a - b
-Q28b M: 3*a*b*(2*a - b) + 2*a - b
-Q28b A: (2*a - b)*(3*a*b + 1)
+Q28b Q: r**2*s + 2*r*s**2 + r + 2*s
+Q28b M: r*s*(r + 2*s) + r + 2*s
+Q28b A: (r + 2*s)*(r*s + 1)
 ===
-Q29a Q: 2*x**2*y + 6*x*y**2
-Q29a A: 2*x*y*(x + 3*y)
+Q29a Q: 12*m**2*n - 6*m*n**2
+Q29a A: 6*m*n*(2*m - n)
 
-Q29b Q: 2*x**2*y + 6*x*y**2 + x + 3*y
-Q29b M: 2*x*y*(x + 3*y) + x + 3*y
-Q29b A: (x + 3*y)*(2*x*y + 1)
+Q29b Q: 12*m**2*n - 6*m*n**2 - 8*m + 4*n
+Q29b M: 6*m*n*(2*m - n) - 8*m + 4*n
+Q29b A: 2*(2*m - n)*(3*m*n - 2)
 ===
-Q30a Q: 4*a**2*b - 6*a*b**2
-Q30a A: 2*a*b*(2*a - 3*b)
+Q30a Q: 3*r**2*s - 9*r*s**2
+Q30a A: 3*r*s*(r - 3*s)
 
-Q30b Q: 4*a**2*b - 6*a*b**2 - 8*a + 12*b
-Q30b M: 2*a*b*(2*a - 3*b) - 8*a + 12*b
-Q30b A: 2*(2*a - 3*b)*(a*b - 2)
+Q30b Q: 3*r**2*s - 9*r*s**2 - 4*r + 12*s
+Q30b M: 3*r*s*(r - 3*s) - 4*r + 12*s
+Q30b A: (r - 3*s)*(3*r*s - 4)
 ===
-Q31a Q: 2*m**2*n - 8*m*n**2
-Q31a A: 2*m*n*(m - 4*n)
+Q31a Q: 8*a**2*b + 6*a*b**2
+Q31a A: 2*a*b*(4*a + 3*b)
 
-Q31b Q: 2*m**2*n - 8*m*n**2 + m - 4*n
-Q31b M: 2*m*n*(m - 4*n) + m - 4*n
-Q31b A: (m - 4*n)*(2*m*n + 1)
+Q31b Q: 8*a**2*b + 6*a*b**2 - 16*a - 12*b
+Q31b M: 2*a*b*(4*a + 3*b) - 16*a - 12*b
+Q31b A: 2*(4*a + 3*b)*(a*b - 2)
 ===
-Q32a Q: 8*p**2*q + 2*p*q**2
-Q32a A: 2*p*q*(4*p + q)
+Q32a Q: 3*a**2*b - 3*a*b**2
+Q32a A: 3*a*b*(a - b)
 
-Q32b Q: 8*p**2*q + 2*p*q**2 - 12*p - 3*q
-Q32b M: 2*p*q*(4*p + q) - 12*p - 3*q
-Q32b A: (4*p + q)*(2*p*q - 3)
+Q32b Q: 3*a**2*b - 3*a*b**2 - 9*a + 9*b
+Q32b M: 3*a*b*(a - b) - 9*a + 9*b
+Q32b A: 3*(a - b)*(a*b - 3)
 ===
-Q33a Q: 6*p**2*q - 8*p*q**2
-Q33a A: 2*p*q*(3*p - 4*q)
+Q33a Q: 3*p**2*q - 3*p*q**2
+Q33a A: 3*p*q*(p - q)
 
-Q33b Q: 6*p**2*q - 8*p*q**2 + 12*p - 16*q
-Q33b M: 2*p*q*(3*p - 4*q) + 12*p - 16*q
-Q33b A: 2*(3*p - 4*q)*(p*q + 2)
+Q33b Q: 3*p**2*q - 3*p*q**2 - 3*p + 3*q
+Q33b M: 3*p*q*(p - q) - 3*p + 3*q
+Q33b A: 3*(p - q)*(p*q - 1)
 ===
-Q34a Q: 12*r**2*s + 6*r*s**2
-Q34a A: 6*r*s*(2*r + s)
+Q34a Q: a**2*b - 2*a*b**2
+Q34a A: a*b*(a - 2*b)
 
-Q34b Q: 12*r**2*s + 6*r*s**2 + 16*r + 8*s
-Q34b M: 6*r*s*(2*r + s) + 16*r + 8*s
-Q34b A: 2*(2*r + s)*(3*r*s + 4)
+Q34b Q: a**2*b - 2*a*b**2 - a + 2*b
+Q34b M: a*b*(a - 2*b) - a + 2*b
+Q34b A: (a - 2*b)*(a*b - 1)
 ===
-Q35a Q: 12*m**2*n - 12*m*n**2
-Q35a A: 12*m*n*(m - n)
+Q35a Q: 6*a**2*b + 6*a*b**2
+Q35a A: 6*a*b*(a + b)
 
-Q35b Q: 12*m**2*n - 12*m*n**2 - 12*m + 12*n
-Q35b M: 12*m*n*(m - n) - 12*m + 12*n
-Q35b A: 12*(m - n)*(m*n - 1)
+Q35b Q: 6*a**2*b + 6*a*b**2 - 3*a - 3*b
+Q35b M: 6*a*b*(a + b) - 3*a - 3*b
+Q35b A: 3*(a + b)*(2*a*b - 1)
 ===
-Q36a Q: 8*x**2*y + 4*x*y**2
-Q36a A: 4*x*y*(2*x + y)
+Q36a Q: 9*x**2*y - 6*x*y**2
+Q36a A: 3*x*y*(3*x - 2*y)
 
-Q36b Q: 8*x**2*y + 4*x*y**2 + 4*x + 2*y
-Q36b M: 4*x*y*(2*x + y) + 4*x + 2*y
-Q36b A: 2*(2*x + y)*(2*x*y + 1)
+Q36b Q: 9*x**2*y - 6*x*y**2 - 6*x + 4*y
+Q36b M: 3*x*y*(3*x - 2*y) - 6*x + 4*y
+Q36b A: (3*x - 2*y)*(3*x*y - 2)
 ===
-Q37a Q: 4*m**2*n + 3*m*n**2
-Q37a A: m*n*(4*m + 3*n)
+Q37a Q: 4*r**2*s + 16*r*s**2
+Q37a A: 4*r*s*(r + 4*s)
 
-Q37b Q: 4*m**2*n + 3*m*n**2 - 4*m - 3*n
-Q37b M: m*n*(4*m + 3*n) - 4*m - 3*n
-Q37b A: (4*m + 3*n)*(m*n - 1)
+Q37b Q: 4*r**2*s + 16*r*s**2 - 4*r - 16*s
+Q37b M: 4*r*s*(r + 4*s) - 4*r - 16*s
+Q37b A: 4*(r + 4*s)*(r*s - 1)
 ===
-Q38a Q: 6*m**2*n + 4*m*n**2
-Q38a A: 2*m*n*(3*m + 2*n)
+Q38a Q: 8*x**2*y + 4*x*y**2
+Q38a A: 4*x*y*(2*x + y)
 
-Q38b Q: 6*m**2*n + 4*m*n**2 + 3*m + 2*n
-Q38b M: 2*m*n*(3*m + 2*n) + 3*m + 2*n
-Q38b A: (3*m + 2*n)*(2*m*n + 1)
+Q38b Q: 8*x**2*y + 4*x*y**2 + 4*x + 2*y
+Q38b M: 4*x*y*(2*x + y) + 4*x + 2*y
+Q38b A: 2*(2*x + y)*(2*x*y + 1)
 ===
-Q39a Q: 6*r**2*s - 2*r*s**2
-Q39a A: 2*r*s*(3*r - s)
+Q39a Q: 4*m**2*n - 3*m*n**2
+Q39a A: m*n*(4*m - 3*n)
 
-Q39b Q: 6*r**2*s - 2*r*s**2 + 12*r - 4*s
-Q39b M: 2*r*s*(3*r - s) + 12*r - 4*s
-Q39b A: 2*(3*r - s)*(r*s + 2)
+Q39b Q: 4*m**2*n - 3*m*n**2 - 12*m + 9*n
+Q39b M: m*n*(4*m - 3*n) - 12*m + 9*n
+Q39b A: (4*m - 3*n)*(m*n - 3)
 ===
-Q40a Q: 12*x**2*y + 12*x*y**2
-Q40a A: 12*x*y*(x + y)
+Q40a Q: 4*m**2*n - 6*m*n**2
+Q40a A: 2*m*n*(2*m - 3*n)
 
-Q40b Q: 12*x**2*y + 12*x*y**2 + 3*x + 3*y
-Q40b M: 12*x*y*(x + y) + 3*x + 3*y
-Q40b A: 3*(x + y)*(4*x*y + 1)
+Q40b Q: 4*m**2*n - 6*m*n**2 - 8*m + 12*n
+Q40b M: 2*m*n*(2*m - 3*n) - 8*m + 12*n
+Q40b A: 2*(2*m - 3*n)*(m*n - 2)
 ===
-Q41a Q: 12*m**2*n + 16*m*n**2
-Q41a A: 4*m*n*(3*m + 4*n)
+Q41a Q: 9*r**2*s + 12*r*s**2
+Q41a A: 3*r*s*(3*r + 4*s)
 
-Q41b Q: 12*m**2*n + 16*m*n**2 + 12*m + 16*n
-Q41b M: 4*m*n*(3*m + 4*n) + 12*m + 16*n
-Q41b A: 4*(3*m + 4*n)*(m*n + 1)
+Q41b Q: 9*r**2*s + 12*r*s**2 - 3*r - 4*s
+Q41b M: 3*r*s*(3*r + 4*s) - 3*r - 4*s
+Q41b A: (3*r + 4*s)*(3*r*s - 1)
 ===
-Q42a Q: 6*r**2*s + 8*r*s**2
-Q42a A: 2*r*s*(3*r + 4*s)
+Q42a Q: 2*p**2*q - 3*p*q**2
+Q42a A: p*q*(2*p - 3*q)
 
-Q42b Q: 6*r**2*s + 8*r*s**2 - 9*r - 12*s
-Q42b M: 2*r*s*(3*r + 4*s) - 9*r - 12*s
-Q42b A: (3*r + 4*s)*(2*r*s - 3)
+Q42b Q: 2*p**2*q - 3*p*q**2 + 6*p - 9*q
+Q42b M: p*q*(2*p - 3*q) + 6*p - 9*q
+Q42b A: (2*p - 3*q)*(p*q + 3)
 ===
-Q43a Q: 3*x**2*y + x*y**2
-Q43a A: x*y*(3*x + y)
+Q43a Q: 8*r**2*s + 12*r*s**2
+Q43a A: 4*r*s*(2*r + 3*s)
 
-Q43b Q: 3*x**2*y + x*y**2 - 12*x - 4*y
-Q43b M: x*y*(3*x + y) - 12*x - 4*y
-Q43b A: (3*x + y)*(x*y - 4)
+Q43b Q: 8*r**2*s + 12*r*s**2 - 6*r - 9*s
+Q43b M: 4*r*s*(2*r + 3*s) - 6*r - 9*s
+Q43b A: (2*r + 3*s)*(4*r*s - 3)
 ===
-Q44a Q: 2*r**2*s + 4*r*s**2
-Q44a A: 2*r*s*(r + 2*s)
+Q44a Q: p**2*q + p*q**2
+Q44a A: p*q*(p + q)
 
-Q44b Q: 2*r**2*s + 4*r*s**2 - 2*r - 4*s
-Q44b M: 2*r*s*(r + 2*s) - 2*r - 4*s
-Q44b A: 2*(r + 2*s)*(r*s - 1)
+Q44b Q: p**2*q + p*q**2 + 4*p + 4*q
+Q44b M: p*q*(p + q) + 4*p + 4*q
+Q44b A: (p + q)*(p*q + 4)
 ===
-Q45a Q: 9*p**2*q + 12*p*q**2
-Q45a A: 3*p*q*(3*p + 4*q)
+Q45a Q: m**2*n + 3*m*n**2
+Q45a A: m*n*(m + 3*n)
 
-Q45b Q: 9*p**2*q + 12*p*q**2 - 3*p - 4*q
-Q45b M: 3*p*q*(3*p + 4*q) - 3*p - 4*q
-Q45b A: (3*p + 4*q)*(3*p*q - 1)
+Q45b Q: m**2*n + 3*m*n**2 + m + 3*n
+Q45b M: m*n*(m + 3*n) + m + 3*n
+Q45b A: (m + 3*n)*(m*n + 1)
 ===
-Q46a Q: 8*x**2*y - 4*x*y**2
-Q46a A: 4*x*y*(2*x - y)
+Q46a Q: 6*m**2*n + 9*m*n**2
+Q46a A: 3*m*n*(2*m + 3*n)
 
-Q46b Q: 8*x**2*y - 4*x*y**2 + 2*x - y
-Q46b M: 4*x*y*(2*x - y) + 2*x - y
-Q46b A: (2*x - y)*(4*x*y + 1)
+Q46b Q: 6*m**2*n + 9*m*n**2 + 4*m + 6*n
+Q46b M: 3*m*n*(2*m + 3*n) + 4*m + 6*n
+Q46b A: (2*m + 3*n)*(3*m*n + 2)
 ===
-Q47a Q: 2*m**2*n - 4*m*n**2
-Q47a A: 2*m*n*(m - 2*n)
+Q47a Q: x**2*y - 2*x*y**2
+Q47a A: x*y*(x - 2*y)
 
-Q47b Q: 2*m**2*n - 4*m*n**2 + 4*m - 8*n
-Q47b M: 2*m*n*(m - 2*n) + 4*m - 8*n
-Q47b A: 2*(m - 2*n)*(m*n + 2)
+Q47b Q: x**2*y - 2*x*y**2 + 3*x - 6*y
+Q47b M: x*y*(x - 2*y) + 3*x - 6*y
+Q47b A: (x - 2*y)*(x*y + 3)
 ===
-Q48a Q: 16*m**2*n + 16*m*n**2
-Q48a A: 16*m*n*(m + n)
+Q48a Q: 12*x**2*y - 9*x*y**2
+Q48a A: 3*x*y*(4*x - 3*y)
 
-Q48b Q: 16*m**2*n + 16*m*n**2 + 12*m + 12*n
-Q48b M: 16*m*n*(m + n) + 12*m + 12*n
-Q48b A: 4*(m + n)*(4*m*n + 3)
+Q48b Q: 12*x**2*y - 9*x*y**2 + 12*x - 9*y
+Q48b M: 3*x*y*(4*x - 3*y) + 12*x - 9*y
+Q48b A: 3*(4*x - 3*y)*(x*y + 1)
 ===
-Q49a Q: 3*a**2*b + 6*a*b**2
-Q49a A: 3*a*b*(a + 2*b)
+Q49a Q: 4*a**2*b + 6*a*b**2
+Q49a A: 2*a*b*(2*a + 3*b)
 
-Q49b Q: 3*a**2*b + 6*a*b**2 - 3*a - 6*b
-Q49b M: 3*a*b*(a + 2*b) - 3*a - 6*b
-Q49b A: 3*(a + 2*b)*(a*b - 1)
+Q49b Q: 4*a**2*b + 6*a*b**2 - 4*a - 6*b
+Q49b M: 2*a*b*(2*a + 3*b) - 4*a - 6*b
+Q49b A: 2*(2*a + 3*b)*(a*b - 1)
 ===
-Q50a Q: 16*p**2*q + 16*p*q**2
-Q50a A: 16*p*q*(p + q)
+Q50a Q: 3*p**2*q + 9*p*q**2
+Q50a A: 3*p*q*(p + 3*q)
 
-Q50b Q: 16*p**2*q + 16*p*q**2 + 12*p + 12*q
-Q50b M: 16*p*q*(p + q) + 12*p + 12*q
-Q50b A: 4*(p + q)*(4*p*q + 3)
+Q50b Q: 3*p**2*q + 9*p*q**2 - 4*p - 12*q
+Q50b M: 3*p*q*(p + 3*q) - 4*p - 12*q
+Q50b A: (p + 3*q)*(3*p*q - 4)
 ===
     </div>
 
