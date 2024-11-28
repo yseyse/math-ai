@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatted Math Output</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=STIX+Two+Math&family=Latin+Modern+Math&display=swap');
+
+        body {
+            font-family: 'Latin Modern Math', 'STIX Two Math', 'Noto Sans Math', 'Cambria Math', 'Courier New', monospace;
+            background-color: #f9f9f9;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .output {
+            background-color: #ffffff;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            white-space: pre-wrap; /* Preserve text formatting */
+        }
+        .math {
+            color: #007BFF;
+            font-family: 'Latin Modern Math', 'STIX Two Math', 'Noto Sans Math', 'Cambria Math', 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <!-- Raw input text -->
+    <div id="raw-input" style="display:none;">
+
+Factorization Level: 1
+
+Q1a Q: 6*m**2*n - 6*m*n**2
+Q1a A: 6*m*n*(m - n)
+
+Q1b Q: 6*m**2*n - 6*m*n**2 + -8*m + 8*n
+Q1b M: 6*m*n*(m - n) + -8*m + 8*n      
+Q1b M: 6*m*n*(m - n) - 8*(m - n)       
+Q1b A: 2*(m - n)*(3*m*n - 4)
+===
+Q2a Q: 12*r**2*s - 16*r*s**2
+Q2a A: 4*r*s*(3*r - 4*s)
+
+Q2b Q: 12*r**2*s - 16*r*s**2 + -6*r + 8*s
+Q2b M: 4*r*s*(3*r - 4*s) + -6*r + 8*s    
+Q2b M: 4*r*s*(3*r - 4*s) - 2*(3*r - 4*s) 
+Q2b A: 2*(3*r - 4*s)*(2*r*s - 1)     
+===
+Q3a Q: a**2*b + 2*a*b**2
+Q3a A: a*b*(a + 2*b)
+
+Q3b Q: a**2*b + 2*a*b**2 + -2*a - 4*b
+Q3b M: a*b*(a + 2*b) + -2*a - 4*b    
+Q3b M: a*b*(a + 2*b) - 2*(a + 2*b)   
+Q3b A: (a + 2*b)*(a*b - 2)
+===
+Q4a Q: 4*x**2*y + 6*x*y**2
+Q4a A: 2*x*y*(2*x + 3*y)
+
+Q4b Q: 4*x**2*y + 6*x*y**2 + 2*x + 3*y
+Q4b M: 2*x*y*(2*x + 3*y) + 2*x + 3*y
+Q4b A: (2*x + 3*y)*(2*x*y + 1)
+===
+Q5a Q: 6*x**2*y + 3*x*y**2
+Q5a A: 3*x*y*(2*x + y)
+
+Q5b Q: 6*x**2*y + 3*x*y**2 + -6*x - 3*y
+Q5b M: 3*x*y*(2*x + y) + -6*x - 3*y
+Q5b M: 3*x*y*(2*x + y) - 3*(2*x + y)
+Q5b A: 3*(2*x + y)*(x*y - 1)
+===
+Factorization Level: 2
+
+Q1a Q: 4*r**2 - 16
+Q1a A: 4*(r - 2)*(r + 2)
+
+Q1b Q: 4*r**2 - 16 - 4*r*s - 8*s
+Q1b M: 4*(r - 2)*(r + 2) - 4*r*s - 8*s
+Q1b M: 4*(r - 2)*(r + 2) - 4*s*(r + 2)
+Q1b A: 4*(r + 2)*(r - s - 2)
+===
+Q2a Q: 4*p**2 - 16
+Q2a A: 4*(p - 2)*(p + 2)
+
+Q2b Q: 4*p**2 - 16 + 2*p*q + 4*q
+Q2b M: 4*(p - 2)*(p + 2) + 2*p*q + 4*q
+Q2b M: 4*(p - 2)*(p + 2) + 2*q*(p + 2)
+Q2b A: 2*(p + 2)*(2*p + q - 4)
+===
+Q3a Q: 4*m**2 - 9
+Q3a A: (2*m - 3)*(2*m + 3)
+
+Q3b Q: 4*m**2 - 9 + 4*m*n - 6*n
+Q3b M: (2*m - 3)*(2*m + 3) + 4*m*n - 6*n
+Q3b M: (2*m - 3)*(2*m + 3) + 2*n*(2*m - 3)
+Q3b A: (2*m - 3)*(2*m + 2*n + 3)
+===
+Q4a Q: 4 - p**2
+Q4a A: -(p - 2)*(p + 2)
+
+Q4b Q: 4 - p**2 + 2*p*q + 4*q
+Q4b M: -(p - 2)*(p + 2) + 2*p*q + 4*q
+Q4b M: -(p - 2)*(p + 2) + 2*q*(p + 2)
+Q4b A: -(p + 2)*(p - 2*q - 2)
+===
+Q5a Q: 9*a**2 + 6*a + 1
+Q5a A: (3*a + 1)**2
+
+Q5b Q: 9*a**2 + 6*a + 1 - 6*a*b - 2*b
+Q5b M: (3*a + 1)**2 - 6*a*b - 2*b
+Q5b M: (3*a + 1)**2 - 2*b*(3*a + 1)
+Q5b A: (3*a + 1)*(3*a - 2*b + 1)
+===
+Factorization Level: 3
+
+Q1a Q: 9*p**2 + 9*p - 4
+Q1a A: (3*p - 1)*(3*p + 4)
+
+Q1b Q: 9*p**2 + 9*p - 4 + 3*p*q**2 - q**2
+Q1b M: (3*p - 1)*(3*p + 4) + 3*p*q**2 - q**2
+Q1b M: (3*p - 1)*(3*p + 4) + q**2*(3*p - 1)
+Q1b A: (3*p - 1)*(3*p + q**2 + 4)
+===
+Q2a Q: 9*x**2 + 6*x + 1
+Q2a A: (3*x + 1)**2
+
+Q2b Q: 9*x**2 + 6*x + 1 + 9*x*y**2 + 3*y**2
+Q2b M: (3*x + 1)**2 + 9*x*y**2 + 3*y**2
+Q2b M: (3*x + 1)**2 + 3*y**2*(3*x + 1)
+Q2b A: (3*x + 1)*(3*x + 3*y**2 + 1)
+===
+Q3a Q: 4*a**2 - 4*a - 3
+Q3a A: (2*a - 3)*(2*a + 1)
+
+Q3b Q: 4*a**2 - 4*a - 3 - 2*a*b**2 - b**2
+Q3b M: (2*a - 3)*(2*a + 1) - 2*a*b**2 - b**2
+Q3b M: (2*a - 3)*(2*a + 1) - b**2*(2*a + 1)
+Q3b A: (2*a + 1)*(2*a - b**2 - 3)
+===
+Q4a Q: 6*r**2 + 15*r + 9
+Q4a A: 3*(r + 1)*(2*r + 3)
+
+Q4b Q: 6*r**2 + 15*r + 9 - 6*r*s**2 - 9*s**2
+Q4b M: 3*(r + 1)*(2*r + 3) - 6*r*s**2 - 9*s**2
+Q4b M: 3*(r + 1)*(2*r + 3) - 3*s**2*(2*r + 3)
+Q4b A: 3*(2*r + 3)*(r - s**2 + 1)
+===
+Q5a Q: 12*x**2 - 12
+Q5a A: 12*(x - 1)*(x + 1)
+
+Q5b Q: 12*x**2 - 12 - 4*x*y**2 + 4*y**2
+Q5b M: 12*(x - 1)*(x + 1) - 4*x*y**2 + 4*y**2
+Q5b M: 12*(x - 1)*(x + 1) - 4*y**2*(x - 1)
+Q5b A: 4*(x - 1)*(3*x - y**2 + 3)
+===
+Factorization Level: 4
+
+Q1a Q: 2*r**2 + 4*r*s - 6*s**2
+Q1a A: 2*(r - s)*(r + 3*s)
+
+Q1b Q: 2*r**2 + 4*r*s - 6*s**2 + 2*r - 2*s
+Q1b M: 2*(r - s)*(r + 3*s) + 2*r - 2*s
+Q1b M: 2*(r - s)*(r + 3*s) + 2*(r - s)
+Q1b A: 2*(r - s)*(r + 3*s + 1)
+===
+Q2a Q: a**2 - 4*a*b + 4*b**2
+Q2a A: (a - 2*b)**2
+
+Q2b Q: a**2 - 4*a*b + 4*b**2 + 2*a - 4*b
+Q2b M: (a - 2*b)**2 + 2*a - 4*b
+Q2b M: (a - 2*b)**2 + 2*(a - 2*b)
+Q2b A: (a - 2*b)*(a - 2*b + 2)
+===
+Q3a Q: 9*p**2 + 9*p*q - 4*q**2
+Q3a A: (3*p - q)*(3*p + 4*q)
+
+Q3b Q: 9*p**2 + 9*p*q - 4*q**2 - 9*p - 12*q
+Q3b M: (3*p - q)*(3*p + 4*q) - 9*p - 12*q
+Q3b M: (3*p - q)*(3*p + 4*q) - 3*(3*p + 4*q)
+Q3b A: (3*p + 4*q)*(3*p - q - 3)
+===
+Q4a Q: 9*a**2 - 18*a*b + 9*b**2
+Q4a A: 9*(a - b)**2
+
+Q4b Q: 9*a**2 - 18*a*b + 9*b**2 + 9*a - 9*b
+Q4b M: 9*(a - b)**2 + 9*a - 9*b
+Q4b M: 9*(a - b)**2 + 9*(a - b)
+Q4b A: 9*(a - b)*(a - b + 1)
+===
+Q5a Q: 4*m**2 + 16*m*n + 16*n**2
+Q5a A: 4*(m + 2*n)**2
+
+Q5b Q: 4*m**2 + 16*m*n + 16*n**2 - 2*m - 4*n
+Q5b M: 4*(m + 2*n)**2 - 2*m - 4*n
+Q5b M: 4*(m + 2*n)**2 - 2*(m + 2*n)
+Q5b A: 2*(m + 2*n)*(2*m + 4*n - 1)
+===
+Factorization Level: 5
+
+Q1a Q: m**2 + 2*m*n + n**2
+Q1a A: (m + n)**2
+
+Q1b Q: m**2 + 2*m*n + n**2 - 4
+Q1b M: (m + n)**2 - 4
+Q1b A: (m + n - 2)*(m + n + 2)
+===
+Q2a Q: 9*x**2 - 24*x*y + 16*y**2
+Q2a A: (3*x - 4*y)**2
+
+Q2b Q: 9*x**2 - 24*x*y + 16*y**2 - 16*z**2
+Q2b M: (3*x - 4*y)**2 - 16*z**2
+Q2b A: (3*x - 4*y - 4*z)*(3*x - 4*y + 4*z)
+===
+Q3a Q: p**2 - 2*p*q + q**2
+Q3a A: (p - q)**2
+
+Q3b Q: p**2 - 2*p*q + q**2 - 16*z**2
+Q3b M: (p - q)**2 - 16*z**2
+Q3b A: (p - q - 4*z)*(p - q + 4*z)
+===
+Q4a Q: 4*r**2 - 8*r*s + 4*s**2
+Q4a A: 4*(r - s)**2
+
+Q4b Q: 4*r**2 - 8*r*s + 4*s**2 - 9
+Q4b M: 4*(r - s)**2 - 9
+Q4b A: (2*r - 2*s - 3)*(2*r - 2*s + 3)
+===
+Q5a Q: 16*m**2 - 8*m*n + n**2
+Q5a A: (4*m - n)**2
+
+Q5b Q: 16*m**2 - 8*m*n + n**2 - 9
+Q5b M: (4*m - n)**2 - 9
+Q5b A: (4*m - n - 3)*(4*m - n + 3)
+===
+Factorization Level: 6
+
+Q1a Q: 27*p**3 + 36*p**2*q + 27*p**2
+Q1a A: 9*p**2*(3*p + 4*q + 3)
+
+Q1b Q: 27*p**3 + 36*p**2*q + 27*p**2 - 27*p - 36*q - 27
+Q1b M: 9*p**2*(3*p + 4*q + 3) - 27*p - 36*q - 27
+Q1b M: 9*p**2*(3*p + 4*q + 3) - 9*(3*p + 4*q + 3)
+Q1b A: 9*(p - 1)*(p + 1)*(3*p + 4*q + 3)
+===
+Q2a Q: 8*p**3 - 16*p**2*q + 12*p**2
+Q2a A: 4*p**2*(2*p - 4*q + 3)
+
+Q2b Q: 8*p**3 - 16*p**2*q + 12*p**2 - 18*p + 36*q - 27
+Q2b M: 4*p**2*(2*p - 4*q + 3) - 18*p + 36*q - 27
+Q2b M: 4*p**2*(2*p - 4*q + 3) - 9*(2*p - 4*q + 3)
+Q2b A: (2*p - 3)*(2*p + 3)*(2*p - 4*q + 3)
+===
+Q3a Q: m**3 - 2*m**2*n + m**2
+Q3a A: m**2*(m - 2*n + 1)
+
+Q3b Q: m**3 - 2*m**2*n + m**2 - 16*m + 32*n - 16
+Q3b M: m**2*(m - 2*n + 1) - 16*m + 32*n - 16
+Q3b M: m**2*(m - 2*n + 1) - 16*(m - 2*n + 1)
+Q3b A: (m - 4)*(m + 4)*(m - 2*n + 1)
+===
+Q4a Q: 64*r**3 - 32*r**2*s - 32*r**2
+Q4a A: 32*r**2*(2*r - s - 1)
+
+Q4b Q: 64*r**3 - 32*r**2*s - 32*r**2 - 36*r + 18*s + 18
+Q4b M: 32*r**2*(2*r - s - 1) - 36*r + 18*s + 18
+Q4b M: 32*r**2*(2*r - s - 1) - 18*(2*r - s - 1)
+Q4b A: 2*(4*r - 3)*(4*r + 3)*(2*r - s - 1)
+===
+Q5a Q: p**3 + p**2*q + p**2
+Q5a A: p**2*(p + q + 1)
+
+Q5b Q: p**3 + p**2*q + p**2 - 9*p - 9*q - 9
+Q5b M: p**2*(p + q + 1) - 9*p - 9*q - 9
+Q5b M: p**2*(p + q + 1) - 9*(p + q + 1)
+Q5b A: (p - 3)*(p + 3)*(p + q + 1)
+===
+Factorization Level: 7
+
+Q1a Q: 48*p**3 - 64*p**2*q
+Q1a A: 16*p**2*(3*p - 4*q)
+
+Q1b Q: 48*p**3 - 64*p**2*q - 3*p*q**2 + 4*q**3
+Q1b M: 16*p**2*(3*p - 4*q) - 3*p*q**2 + 4*q**3
+Q1b M: 16*p**2*(3*p - 4*q) - q**2*(3*p - 4*q)
+Q1b A: (3*p - 4*q)*(4*p - q)*(4*p + q)
+===
+Q2a Q: 18*a**3 - 36*a**2*b
+Q2a A: 18*a**2*(a - 2*b)
+
+Q2b Q: 18*a**3 - 36*a**2*b - 32*a*b**2 + 64*b**3
+Q2b M: 18*a**2*(a - 2*b) - 32*a*b**2 + 64*b**3
+Q2b M: 18*a**2*(a - 2*b) - 32*b**2*(a - 2*b)
+Q2b A: 2*(a - 2*b)*(3*a - 4*b)*(3*a + 4*b)
+===
+Q3a Q: 8*r**3 + 16*r**2*s
+Q3a A: 8*r**2*(r + 2*s)
+
+Q3b Q: 8*r**3 + 16*r**2*s - 2*r*s**2 - 4*s**3
+Q3b M: 8*r**2*(r + 2*s) - 2*r*s**2 - 4*s**3
+Q3b M: 8*r**2*(r + 2*s) - 2*s**2*(r + 2*s)
+Q3b A: 2*(r + 2*s)*(2*r - s)*(2*r + s)
+===
+Q4a Q: 36*x**3 + 27*x**2*y
+Q4a A: 9*x**2*(4*x + 3*y)
+
+Q4b Q: 36*x**3 + 27*x**2*y - 36*x*y**2 - 27*y**3
+Q4b M: 9*x**2*(4*x + 3*y) - 36*x*y**2 - 27*y**3
+Q4b M: 9*x**2*(4*x + 3*y) - 9*y**2*(4*x + 3*y)
+Q4b A: 9*(x - y)*(x + y)*(4*x + 3*y)
+===
+Q5a Q: 12*p**3 - 8*p**2*q
+Q5a A: 4*p**2*(3*p - 2*q)
+
+Q5b Q: 12*p**3 - 8*p**2*q - 27*p*q**2 + 18*q**3
+Q5b M: 4*p**2*(3*p - 2*q) - 27*p*q**2 + 18*q**3
+Q5b M: 4*p**2*(3*p - 2*q) - 9*q**2*(3*p - 2*q)
+Q5b A: (2*p - 3*q)*(2*p + 3*q)*(3*p - 2*q)
+===
+    </div>
+
+    <!-- Formatted output -->
+    <div id="formatted-output" class="output"></div>
+
+    <script>
+        // Get the raw input text
+        const rawInput = document.getElementById('raw-input').innerText;
+
+        // Function to format math expressions: replace ** with superscripts and remove *
+        function formatMath(text) {
+            // Replace **N with <sup>N</sup>
+            let formattedText = text.replace(/\*\*([0-9]+)/g, '<sup>$1</sup>');
+            // Remove all single * symbols
+            formattedText = formattedText.replace(/\*/g, '');
+            return formattedText;
+        }
+
+        // Apply formatting
+        const formattedText = formatMath(rawInput);
+
+        // Display the formatted text
+        document.getElementById('formatted-output').innerHTML = `<span class="math">${formattedText}</span>`;
+    </script>
+</body>
+</html>
