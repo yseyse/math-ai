@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Whiteboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            background-color: white;
+            cursor: crosshair;
+        }
+        .toolbar {
+            display: flex;
+            gap: 10px;
+            margin: 10px;
+        }
+        .toolbar button, .toolbar input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .toolbar button:hover {
+            background-color: #ddd;
+        }
+        .toolbar input {
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="toolbar">
+        <button id="draw">Draw</button>
+        <button id="erase">Erase</button>
+        <label>
+            Line Width:
+            <input type="number" id="lineWidth" min="1" max="50" value="5">
+        </label>
+        <label>
+            Color:
+            <input type="color" id="colorPicker" value="#000000">
+        </label>
+        <button id="clearCanvas">Clear</button>
+    </div>
+    <canvas id="whiteboard" width="800" height="500"></canvas>
+
+    <script>
+        const canvas = document.getElementById('whiteboard');
+        const ctx = canvas.getContext('2d');
+        const drawButton = document.getElementById('draw');
+        const eraseButton = document.getElementById('erase');
+        const clearCanvasButton = document.getElementById('clearCanvas');
+        const lineWidthInput = document.getElementById('lineWidth');
+        const colorPicker = document.getElementById('colorPicker');
+
+        let isDrawing = false;
+        let isErasing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+            ctx.beginPath(); // Reset the path to avoid unwanted connections.
+        });
+
+        canvas.addEventListener('mousemove', draw);
+
+        function draw(e) {
+            if (!isDrawing) return;
+
+            ctx.lineWidth = parseInt(lineWidthInput.value);
+            ctx.lineCap = 'round';
+
+            if (isErasing) {
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.strokeStyle = 'rgba(0,0,0,1)';
+            } else {
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.strokeStyle = colorPicker.value;
+            }
+
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+
+        drawButton.addEventListener('click', () => {
+            isErasing = false;
+        });
+
+        eraseButton.addEventListener('click', () => {
+            isErasing = true;
+        });
+
+        clearCanvasButton.addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+    </script>
+</body>
+</html>
