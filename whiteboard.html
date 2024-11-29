@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Whiteboard</title>
+    <title>Interactive Whiteboard with Fix</title>
     <style>
         body {
             margin: 0;
@@ -45,10 +45,7 @@
             Line Width:
             <input type="number" id="lineWidth" min="1" max="50" value="5">
         </label>
-        <label>
-            Color:
-            <input type="color" id="colorPicker" value="#000000">
-        </label>
+        <button id="undo">Undo</button>
         <button id="clearCanvas">Clear</button>
     </div>
     <canvas id="whiteboard" width="800" height="500"></canvas>
@@ -58,58 +55,173 @@
         const ctx = canvas.getContext('2d');
         const drawButton = document.getElementById('draw');
         const eraseButton = document.getElementById('erase');
+        const undoButton = document.getElementById('undo');
         const clearCanvasButton = document.getElementById('clearCanvas');
         const lineWidthInput = document.getElementById('lineWidth');
-        const colorPicker = document.getElementById('colorPicker');
 
         let isDrawing = false;
         let isErasing = false;
         let lastX = 0;
         let lastY = 0;
 
+        const lines = [];
+        let currentLine = [];
+        let erasePath = [];
+
         canvas.addEventListener('mousedown', (e) => {
-            isDrawing = true;
-            [lastX, lastY] = [e.offsetX, e.offsetY];
+            if (isErasing) {
+                isDrawing = true;
+                erasePath = [];
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            } else {
+                isDrawing = true;
+                currentLine = [];
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+
+                // Draw the initial point to start the line
+                const lineWidth = parseInt(lineWidthInput.value);
+                ctx.lineWidth = lineWidth;
+                ctx.lineCap = 'round';
+                ctx.strokeStyle = 'black';
+
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(lastX, lastY); // Draw a dot for the starting point
+                ctx.stroke();
+
+                currentLine.push({ x: lastX, y: lastY, lineWidth });
+            }
         });
 
         canvas.addEventListener('mouseup', () => {
-            isDrawing = false;
-            ctx.beginPath(); // Reset the path to avoid unwanted connections.
+            if (isErasing) {
+                isDrawing = false;
+                handleErase();
+                erasePath = [];
+            } else {
+                isDrawing = false;
+                if (currentLine.length > 0) {
+                    lines.push([...currentLine]);
+                }
+                currentLine = [];
+            }
+            ctx.beginPath();
         });
 
-        canvas.addEventListener('mousemove', draw);
-
-        function draw(e) {
+        canvas.addEventListener('mousemove', (e) => {
             if (!isDrawing) return;
 
-            ctx.lineWidth = parseInt(lineWidthInput.value);
-            ctx.lineCap = 'round';
-
             if (isErasing) {
-                ctx.globalCompositeOperation = 'destination-out';
-                ctx.strokeStyle = 'rgba(0,0,0,1)';
+                const eraseWidth = parseInt(lineWidthInput.value);
+                ctx.strokeStyle = 'gray';
+                ctx.lineWidth = eraseWidth;
+                ctx.lineCap = 'round';
+
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.stroke();
+
+                erasePath.push({ x1: lastX, y1: lastY, x2: e.offsetX, y2: e.offsetY });
+
+                [lastX, lastY] = [e.offsetX, e.offsetY];
             } else {
-                ctx.globalCompositeOperation = 'source-over';
-                ctx.strokeStyle = colorPicker.value;
+                const lineWidth = parseInt(lineWidthInput.value);
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = lineWidth;
+                ctx.lineCap = 'round';
+
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.stroke();
+
+                currentLine.push({ x: e.offsetX, y: e.offsetY, lineWidth });
+
+                [lastX, lastY] = [e.offsetX, e.offsetY];
             }
-
-            ctx.beginPath();
-            ctx.moveTo(lastX, lastY);
-            ctx.lineTo(e.offsetX, e.offsetY);
-            ctx.stroke();
-
-            [lastX, lastY] = [e.offsetX, e.offsetY];
-        }
+        });
 
         drawButton.addEventListener('click', () => {
             isErasing = false;
+            erasePath = [];
+            redrawCanvas();
         });
 
         eraseButton.addEventListener('click', () => {
             isErasing = true;
+            redrawCanvas();
+        });
+
+        function handleErase() {
+            const toRemove = new Set();
+
+            // Check each line for intersection with erasePath
+            lines.forEach((line, lineIndex) => {
+                erasePath.forEach(segment => {
+                    for (let i = 0; i < line.length - 1; i++) {
+                        const point1 = line[i];
+                        const point2 = line[i + 1];
+                        if (intersects(segment, { x1: point1.x, y1: point1.y, x2: point2.x, y2: point2.y })) {
+                            toRemove.add(lineIndex);
+                            break;
+                        }
+                    }
+                });
+            });
+
+            // Remove intersected lines immediately
+            lines.forEach((line, index) => {
+                if (toRemove.has(index)) {
+                    lines[index] = null; // Mark for removal
+                }
+            });
+
+            // Filter out removed lines
+            const filteredLines = lines.filter(line => line !== null);
+            lines.length = 0;
+            lines.push(...filteredLines);
+
+            redrawCanvas();
+        }
+
+        function intersects(l1, l2) {
+            const det = (l1.x1 - l1.x2) * (l2.y1 - l2.y2) - (l1.y1 - l1.y2) * (l2.x1 - l2.x2);
+            if (det === 0) return false;
+
+            const lambda = ((l2.y1 - l2.y2) * (l2.x1 - l1.x1) + (l2.x2 - l2.x1) * (l2.y1 - l1.y1)) / det;
+            const gamma = ((l1.y1 - l1.y2) * (l2.x1 - l1.x1) + (l1.x2 - l1.x1) * (l2.y1 - l1.y1)) / det;
+
+            return 0 <= lambda && lambda <= 2 && 0 <= gamma && gamma <= 2;
+        }
+
+        function redrawCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            lines.forEach(line => {
+                ctx.beginPath();
+                line.forEach((point, index) => {
+                    ctx.lineWidth = point.lineWidth;
+                    ctx.lineCap = 'round';
+                    ctx.strokeStyle = 'black';
+                    if (index === 0) {
+                        ctx.moveTo(point.x, point.y);
+                    } else {
+                        ctx.lineTo(point.x, point.y);
+                    }
+                    ctx.stroke();
+                });
+            });
+        }
+
+        undoButton.addEventListener('click', () => {
+            if (lines.length > 0) {
+                lines.pop();
+                redrawCanvas();
+            }
         });
 
         clearCanvasButton.addEventListener('click', () => {
+            lines.length = 0;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
         });
     </script>
