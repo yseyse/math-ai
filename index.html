@@ -149,6 +149,7 @@
             width: 200px; /* Adjust size as needed */
             height: auto;
             margin-bottom: 10px;
+            margin-bottom: 10px;
         }
 		body img {
 			width: 400px; /* Adjust size as needed */
@@ -173,7 +174,7 @@
     <h1>Login to LearnMathAI</h1>
     <form id="loginForm">
         <label for="email">Email:</label>
-        <input type="email" id="email" value="test@test.com" placeholder="Enter your email">
+        <input type="email" id="email" value="student_test@test.com" placeholder="Enter your email">
         
         <label for="password">Password:</label>
         <input type="password" id="password" value="123456" placeholder="Enter your password">
@@ -254,8 +255,8 @@
         const password = document.getElementById('password').value;
         const errorMessage = document.getElementById('errorMessage');
 
-        if (email === "test@test.com" && password === "123456") {
-            window.location.href = "entrance.html";
+        if (email === "student_test@test.com" && password === "123456") {
+            window.location.href = "topic.html";
         } else {
             errorMessage.textContent = "Password or email is incorrect!";
         }
@@ -263,7 +264,7 @@
 
     function handleCredentialResponse(response) {
         console.log("Encoded JWT ID token: " + response.credential);
-        window.location.href = "entrance.html";
+        window.location.href = "topic.html";
     }
 </script>
 

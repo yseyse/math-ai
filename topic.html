@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnMathAI Entrance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .box {
+            background-color: #e8f5e9;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+        .box span {
+            display: block;
+            font-size: 14px;
+            font-weight: normal;
+            color: #555;
+            margin-top: 5px;
+        }
+        .box:hover {
+            background-color: #c8e6c9;
+        }
+        .selected {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .disabled {
+            background-color: #f0f0f0;
+            color: #aaa;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px;
+            margin: 20px auto;
+            display: block;
+            width: 50%;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to LearnMathAI, <u>Student Test 1!</u></h1>
+</header>
+
+<div class="container">
+    <div class="box" onclick="selectBox(this)" data-url="factorization.html">
+        Factorization
+        <span>Assigned by Teacher A on 2024-11-30</span>
+        <span>Status: Pending</span>
+    </div>
+    <div class="box disabled" onclick="selectBox(this)" data-url="integral_indices.html">
+        Integral Indices
+        <span>Assigned by Teacher A on 2024-11-30</span>
+        <span>Status: Pending</span>
+    </div>
+    <div class="box disabled" onclick="selectBox(this)" data-url="percentages.html">
+        Percentages
+        <span>Assigned by Teacher A on 2024-11-30</span>
+        <span>Status: Done</span>
+    </div>
+    <div class="box disabled" onclick="selectBox(this)" data-url="mixed_operations.html">
+        Mixed Operations of Directed Numbers
+        <span>Assigned by Teacher A on 2024-11-30</span>
+        <span>Status: Done</span>
+    </div>
+    
+    <button onclick="startLesson()">Start</button>
+</div>
+
+<script>
+    let selectedBox = null;
+
+    function selectBox(box) {
+        // If the box is disabled, do nothing
+        if (box.classList.contains('disabled')) {
+            return;
+        }
+        // Remove the 'selected' class from the previously selected box, if any
+        if (selectedBox) {
+            selectedBox.classList.remove('selected');
+        }
+        // Add the 'selected' class to the clicked box
+        selectedBox = box;
+        box.classList.add('selected');
+    }
+
+    function startLesson() {
+        if (!selectedBox) {
+            alert("Please select a topic to start.");
+        } else {
+            const targetUrl = selectedBox.getAttribute('data-url');
+            if (targetUrl) {
+                window.location.href = targetUrl;
+            } else {
+                alert("No page is assigned to this topic.");
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
