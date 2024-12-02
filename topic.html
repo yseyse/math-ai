@@ -24,6 +24,8 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+			align-items: center;
+			text-align: center; /* Ensure text alignment */
         }
         .box {
             background-color: #e8f5e9;
@@ -71,6 +73,9 @@
         button:hover {
             background-color: #45a049;
         }
+		.container h1 {
+			margin: 0; /* Remove any default margin */
+		}
     </style>
 </head>
 <body>
@@ -80,6 +85,8 @@
 </header>
 
 <div class="container">
+
+    <h1>Select a topic:</h1>
     <div class="box" onclick="selectBox(this)" data-url="factorization.html">
         Factorization
         <span>Assigned by Teacher A on 2024-11-30</span>

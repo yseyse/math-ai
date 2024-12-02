@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Whiteboard with Fix</title>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
     <style>
         body {
             margin: 0;
@@ -26,7 +29,6 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             background-color: #fff;
         }
         .toolbar {
@@ -54,6 +56,8 @@
             height: 100%;
         }
         .info-box {
+            display: inline-flex;
+            align-items: center;
             background-color: #e8f5e9;
             padding: 20px;
             border-radius: 6px;
@@ -64,10 +68,10 @@
             font-size: 20px;
             color: #333;
         }
-        .info-box p {
-            margin: 10px 0;
-            font-size: 14px;
-            color: #555;
+        .info-box span {
+            margin-left: 10px;
+            font-size: 16px;
+            color: #333;
         }
     </style>
 </head>
@@ -86,19 +90,21 @@
         <canvas id="whiteboard"></canvas>
     </div>
     <div class="right-panel">
+			<h1>Q1a.</h1>
         <div class="info-box">
-            <h2>Welcome to the Whiteboard</h2>
-            <p>This is your interactive whiteboard. Use the toolbar to draw, erase, or clear the canvas. You can adjust the line width and undo previous actions as needed.</p>
-            <p><strong>Instructions:</strong></p>
-            <ul>
-                <li>Click "Draw" to start drawing.</li>
-                <li>Click "Erase" to remove parts of your drawing.</li>
-                <li>Use "Undo" to revert the last change.</li>
-                <li>Adjust "Line Width" to change the thickness of the lines.</li>
-                <li>Click "Clear" to erase the entire canvas.</li>
-            </ul>
+
+            Factorize:　$${6m^2n-6mn^2}$$
+
         </div>
-        <button id="startButton" style="padding: 20px; font-size: 20px; border: 2px solid #ccc; border-radius: 8px; cursor: pointer; background-color: #4CAF50; color: white;">Start</button>
+		
+			<h1>Q1b.</h1>
+        <div class="info-box">
+
+            Factorize:　$${6m^2n-6mn^2-8m+8n}$$
+
+        </div>
+		<br>
+        <button id="startButton" style="padding: 20px; font-size: 20px; border: 2px solid #ccc; border-radius: 8px; cursor: pointer; background-color: #4CAF50; color: white;">Save and Next Question</button>
     </div>
 
 
@@ -296,7 +302,7 @@
         });
 
         startButton.addEventListener('click', () => {
-            window.location.href = 'factorizationQ1.html';
+            window.location.href = 'factorizationQ2.html';
         });
     </script>
 </body>
